@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"io/ioutil"
 	"log"
 	"strings"
 	"text/template"
@@ -15,18 +16,24 @@ func JoinString(a []interface{}, delimiter string) string {
 	return strings.Join(paramSlice, delimiter)
 }
 
-func renderTemplateFile(config *map[string]interface{}, coreFile string) []byte {
+func renderTemplateFile(config *map[string]interface{}, file string) []byte {
 	buf := &bytes.Buffer{}
+
+	// read Template
+	templateFile, err := ioutil.ReadFile(file)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// helper
 	funcMap := template.FuncMap{"JoinString": JoinString}
 
 	// generate template
-	coreTemplate := template.New("tempio").Funcs(funcMap)
-	template.Must(coreTemplate.ParseFiles(coreFile))
+	coreTemplate := template.New("tempIO").Funcs(funcMap)
+	template.Must(coreTemplate.Parse(string(templateFile)))
 
 	// render
-	err := coreTemplate.Execute(buf, *config)
+	err = coreTemplate.Execute(buf, *config)
 	if err != nil {
 		log.Fatal(err)
 	}

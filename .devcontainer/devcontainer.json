@@ -1,5 +1,5 @@
 {
-	"name": "Plugin Observare",
+	"name": "TempIO",
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
