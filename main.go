@@ -18,7 +18,7 @@ func main() {
 	config := readConfigFile(*configFile)
 
 	// create & write corefile
-	data := renderTemplateFile(config, *coreFile)
+	data := renderTemplateFile(config, *templateFile)
 	err := ioutil.WriteFile(*outFile, data, 0644)
 	if err != nil {
 		log.Fatal(err)
