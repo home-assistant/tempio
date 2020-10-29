@@ -25,7 +25,6 @@ func readConfigPipe() *map[string]interface{} {
 			log.Fatal(err)
 		}
 	}
-	defer os.Stdout.Close()
 	return config
 }
 
