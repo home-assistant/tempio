@@ -1,11 +1,9 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"io/ioutil"
 	"log"
-	"os"
 )
 
 func main() {
@@ -24,15 +22,7 @@ func main() {
 	}
 
 	// Get config
-	if *configFile == "" {
-		err := json.NewDecoder(os.Stdin).Decode(&config)
-		if err != nil {
-			log.Fatal(err)
-		}
-	} else {
-		log.Print(*templateFile)
-		config = readConfigFile(*configFile)
-	}
+	config = readConfig(*configFile)
 
 	// create & write corefile
 	data := renderTemplateFile(config, *templateFile)
