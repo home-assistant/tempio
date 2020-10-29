@@ -16,7 +16,7 @@ func readConfig(file string) *map[string]interface{} {
 }
 
 func readConfigPipe() *map[string]interface{} {
-	var config *map[string]interface{}
+	var config map[string]interface{}
 	defer os.Stdin.Close()
 	stat, _ := os.Stdin.Stat()
 	if (stat.Mode() & os.ModeCharDevice) == 0 {
@@ -25,7 +25,7 @@ func readConfigPipe() *map[string]interface{} {
 			log.Fatal(err)
 		}
 	}
-	return config
+	return &config
 }
 
 func readConfigFile(file string) *map[string]interface{} {
