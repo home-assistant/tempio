@@ -19,7 +19,7 @@ func main() {
 	if *templateFile == "" {
 		log.Fatal("Missing template argument")
 	}
-	if *templateFile == "" {
+	if *outFile == "" {
 		log.Fatal("Missing out argument")
 	}
 
