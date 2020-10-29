@@ -27,3 +27,6 @@ runs:
 
         echo "Adding tempio to PATH"
         echo "${{ github.action_path }}/bin" >> "$GITHUB_PATH"
+branding:
+  icon: 'terminal'  
+  color: 'black'

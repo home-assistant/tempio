@@ -28,7 +28,7 @@ echo '{"some": "value"}' | tempio \
     -out /etc/corefile
 ```
 
-## Add tempio to your Github actions
+## Add tempio to your GitHub actions
 
 ```yaml
 - name: Setup tempio
