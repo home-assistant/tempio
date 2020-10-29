@@ -1,0 +1,29 @@
+name: "tempio"
+description: "A template helper for docker images which using text/template golang engine."
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      id: version
+      run: |
+        input=$(echo "${{ github.action_path }}" | cut -d"/" -f8 )
+        if [[ "${input}" == "main" ]] || [[ -z "${input}" ]]; then
+          input="latest"
+        fi
+        echo "::set-output name=version::${input}"
+
+    - shell: bash
+      run: |
+        mkdir -p "${{ github.action_path }}/bin"
+        if [[ "${{ steps.version.outputs.version }}" == "latest" ]]; then
+          url="https://github.com/home-assistant/tempio/releases/latest/download/tempio_amd64"
+        else
+          url="https://github.com/home-assistant/tempio/releases/download/${{ steps.version.outputs.version }}/tempio_amd64"
+        fi
+
+        echo "Downloading ${{ steps.version.outputs.version }} version of tempio"
+        curl -Lo "${{ github.action_path }}/bin/tempio" "$url"
+        chmod +x "${{ github.action_path }}/bin/tempio"
+
+        echo "Adding tempio to PATH"
+        echo "${{ github.action_path }}/bin" >> "$GITHUB_PATH"
