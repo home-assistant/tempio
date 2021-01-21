@@ -10,6 +10,10 @@ Custom template commands
 | Command                        | Description                                                                        |
 |------------------------------- |----------------------------------------------------------------------------------- |
 | **JoinString** .value ", "     | Join a array of strings with an seperator.                                         |
+| **CalcAdd** a b    | Returns the sum of a and b.                                         |
+| **CalcSubtract** a b    | Returns the difference of a from b.                                         |
+| **CalcMultiply** a b    | Returns the product of a and b.                                         |
+| **CalcDivide** a b    | Returns the division of a from b.                                         |
 
 ## Basic Example
 
