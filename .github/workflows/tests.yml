@@ -18,6 +18,6 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: ${{ env.GOLANG_VERSION }}
-      - name: run tests
+      - shell: bash
         run: |
           go test
