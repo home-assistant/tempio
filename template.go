@@ -5,6 +5,8 @@ import (
 	"io/ioutil"
 	"log"
 	"text/template"
+
+	"github.com/Masterminds/sprig"
 )
 
 func renderTemplateFile(config *map[string]interface{}, file string) []byte {
@@ -20,17 +22,8 @@ func renderTemplateFile(config *map[string]interface{}, file string) []byte {
 func renderTemplateBuffer(config *map[string]interface{}, templateData []byte) []byte {
 	buf := &bytes.Buffer{}
 
-	// helper
-	funcMap := template.FuncMap{
-		"JoinString":   JoinString,
-		"CalcAdd":      CalcAdd,
-		"CalcSubtract": CalcSubtract,
-		"CalcMultiply": CalcMultiply,
-		"CalcDivide":   CalcDivide,
-	}
-
 	// generate template
-	coreTemplate := template.New("tempIO").Funcs(funcMap)
+	coreTemplate := template.New("tempIO").Funcs(sprig.TxtFuncMap())
 	template.Must(coreTemplate.Parse(string(templateData)))
 
 	// render
