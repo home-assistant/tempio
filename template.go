@@ -6,7 +6,7 @@ import (
 	"log"
 	"text/template"
 
-	"github.com/Masterminds/sprig"
+	sprig "github.com/Masterminds/sprig/v3"
 )
 
 func renderTemplateFile(config *map[string]interface{}, file string) []byte {
