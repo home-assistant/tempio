@@ -35,8 +35,14 @@ func readConfigFile(file string) *map[string]interface{} {
 	}
 
 	// Parse json
+	return readConfigBuffer(configFile)
+}
+
+func readConfigBuffer(buffer []byte) *map[string]interface{} {
 	var config map[string]interface{}
-	err = json.Unmarshal(configFile, &config)
+
+	// Parse json
+	err := json.Unmarshal(buffer, &config)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -1,15 +1,9 @@
 # tempio
-A template helper for docker images which using [text/template](https://golang.org/pkg/text/template/) golang engine.
+A template helper for docker images which using [text/template](https://golang.org/pkg/text/template/) golang engine with [sprig functions](http://masterminds.github.io/sprig/).
 
 Support conf format:
 
 - json
-
-Custom template commands
-
-| Command                        | Description                                                                        |
-|------------------------------- |----------------------------------------------------------------------------------- |
-| **JoinString** .value ", "     | Join a array of strings with an seperator.                                         |
 
 ## Basic Example
 
