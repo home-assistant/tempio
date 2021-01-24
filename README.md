@@ -10,7 +10,7 @@ Support conf format:
 ```bash
 tempio \
     -conf /config/coredns.json \
-    -template /usr/share/corefile.tempio \
+    -template /usr/share/tempio/corefile \
     -out /etc/corefile
 ```
 
@@ -18,7 +18,7 @@ tempio \
 
 ```bash
 echo '{"some": "value"}' | tempio \
-    -template /usr/share/corefile.tempio \
+    -template /usr/share/tempio/corefile \
     -out /etc/corefile
 ```
 
