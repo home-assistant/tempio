@@ -47,7 +47,7 @@ jobs:
         asset_content_type: application/x-binary
 
     - name: Signing asset
-      if: needs.init.outputs.publish == 'true'
+      if: github.event_name == 'release'
       uses: home-assistant/actions/helpers/codenotary@master
       with:
         source: "${{ github.workspace }}/${{ matrix.variant.name }}"
