@@ -5,4 +5,10 @@ updates:
   schedule:
     interval: daily
     time: "06:00"
-  open-pull-requests-limit: 10  
+  open-pull-requests-limit: 10
+- package-ecosystem: gomod
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "06:00"
+  open-pull-requests-limit: 10
