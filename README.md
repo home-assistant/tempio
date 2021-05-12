@@ -22,6 +22,16 @@ echo '{"some": "value"}' | tempio \
     -out /etc/corefile
 ```
 
+## No Outfile Example
+
+_When  `-out` is not supplied, the result is printed to the console._
+
+```bash
+$ echo '{"some": "value"}' | tempio \
+    -template /usr/share/tempio/corefile
+> {"some": "value", "other": "value"}
+```
+
 ## Add tempio to your GitHub actions
 
 ```yaml
