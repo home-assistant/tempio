@@ -13,7 +13,7 @@ func renderTemplateFile(config *map[string]interface{}, file string) []byte {
 	// read Template
 	templateFile, err := ioutil.ReadFile(file)
 	if err != nil {
-		log.Fatalf("Cant read file %s - %s", file, err)
+		log.Fatalf("Cant read template file %s - %s", file, err)
 	}
 
 	return renderTemplateBuffer(config, templateFile)
