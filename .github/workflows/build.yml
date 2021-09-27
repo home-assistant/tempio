@@ -38,13 +38,10 @@ jobs:
 
     - name: Build ${{ matrix.variant.name }}
       run: |
-        CGO_ENABLED=0 ${{ matrix.variant.args }} \
-          go build \
-          -ldflags="-s -w -X main.TempioVersion=${{ steps.version.outputs.version }}" \
-          -o "${{ matrix.variant.name }}"
+        CGO_ENABLED=0 ${{ matrix.variant.args }} go build -ldflags="-s -w -X main.TempioVersion=${{ steps.version.outputs.version }}" -o "${{ matrix.variant.name }}"
 
     - name: Print help ${{ matrix.variant.name }}
-      run: "${{ github.workspace }}/${{ matrix.variant.name }}" --help
+      run: ${{ github.workspace }}/${{ matrix.variant.name }} --help
 
     - name: Upload release asset
       if: github.event_name == 'release'
