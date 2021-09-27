@@ -32,8 +32,19 @@ jobs:
       with:
         go-version: ${{ env.GOLANG_VERSION }}
 
+    - name: Get version
+      id: version
+      uses: home-assistant/actions/helpers/version@master
+
     - name: Build ${{ matrix.variant.name }}
-      run: CGO_ENABLED=0 ${{ matrix.variant.args }} go build -ldflags="-s -w" -o "${{ matrix.variant.name }}"
+      run: |
+        CGO_ENABLED=0 ${{ matrix.variant.args }} \
+          go build \
+          -ldflags="-s -w -X main.TempioVersion=${{ steps.version.outputs.version }}" \
+          -o "${{ matrix.variant.name }}"
+
+    - name: Print help ${{ matrix.variant.name }}
+      run: "${{ github.workspace }}/${{ matrix.variant.name }}" --help
 
     - name: Upload release asset
       if: github.event_name == 'release'
