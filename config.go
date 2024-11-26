@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"os"
 )
@@ -29,7 +28,7 @@ func readConfigPipe() *map[string]interface{} {
 }
 
 func readConfigFile(file string) *map[string]interface{} {
-	configFile, err := ioutil.ReadFile(file)
+	configFile, err := os.ReadFile(file)
 	if err != nil {
 		log.Fatal(err)
 	}

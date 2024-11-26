@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
+	"os"
 )
 
 var TempioVersion string
@@ -38,7 +38,7 @@ func main() {
 	if *outFile == "" {
 		fmt.Println(string(data))
 	} else {
-		err := ioutil.WriteFile(*outFile, data, 0644)
+		err := os.WriteFile(*outFile, data, 0644)
 		if err != nil {
 			log.Fatal(err)
 		}
