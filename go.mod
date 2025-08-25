@@ -4,7 +4,7 @@ go 1.23
 
 require (
 	github.com/Masterminds/sprig/v3 v3.3.0
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.0
 )
 
 require (
