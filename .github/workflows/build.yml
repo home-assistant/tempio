@@ -23,6 +23,8 @@ jobs:
           - {"name": "tempio_armhf", "args": "GOARM=6 GOARCH=arm"}
           - {"name": "tempio_armv7", "args": "GOARM=7 GOARCH=arm"}
           - {"name": "tempio_aarch64", "args": "GOARCH=arm64"}
+          - {"name": "tempio_darwin_amd64", "args": "GOOS=darwin GOARCH=amd64"}
+          - {"name": "tempio_darwin_arm64", "args": "GOOS=darwin GOARCH=arm64"}
     steps:
     - name: Checkout the repository
       uses: actions/checkout@v6.0.2
