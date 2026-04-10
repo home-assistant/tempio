@@ -1,6 +1,6 @@
 module github.com/home-assistant/tempio
 
-go 1.23
+go 1.25
 
 require (
 	github.com/Masterminds/sprig/v3 v3.3.0
