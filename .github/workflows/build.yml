@@ -46,9 +46,6 @@ jobs:
 
     - name: Upload release asset
       if: github.event_name == 'release'
-      uses: shogo82148/actions-upload-release-asset@v1
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: "${{ github.workspace }}/${{ matrix.variant.name }}"
-        asset_name: ${{ matrix.variant.name }}
-        asset_content_type: application/x-binary
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh release upload "${{ github.event.release.tag_name }}" "${{ matrix.variant.name }}" --clobber
