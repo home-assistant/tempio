@@ -1,9 +1,18 @@
 # tempio
-A template helper for docker images which using [text/template](https://golang.org/pkg/text/template/) golang engine with [sprig functions](http://masterminds.github.io/sprig/).
+A template helper for docker images which using [text/template](https://golang.org/pkg/text/template/) golang engine with [sprout functions](https://docs.atom.codes/sprout).
 
 Support conf format:
 
 - json
+
+## Template functions
+
+Templates can use all functions provided by [sprout](https://docs.atom.codes/sprout), the maintained successor of [sprig](http://masterminds.github.io/sprig/). Both naming schemes work:
+
+- The new sprout names, e.g. `toUpper`, `base64Encode`, `toCamelCase`
+- The legacy sprig names, e.g. `upper`, `b64enc`, `camelcase`
+
+Existing templates written for sprig keep working unchanged. The legacy names are deprecated upstream and may be removed in a future major version of tempio, so prefer the sprout names for new templates.
 
 ## Basic Example
 
