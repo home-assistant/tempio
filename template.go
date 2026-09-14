@@ -6,7 +6,7 @@ import (
 	"os"
 	"text/template"
 
-	sprig "github.com/Masterminds/sprig/v3"
+	"github.com/go-sprout/sprout/sprigin"
 )
 
 func renderTemplateFile(config *map[string]interface{}, file string) []byte {
@@ -23,7 +23,7 @@ func renderTemplateBuffer(config *map[string]interface{}, templateData []byte) [
 	buf := &bytes.Buffer{}
 
 	// generate template
-	coreTemplate := template.New("tempIO").Funcs(sprig.TxtFuncMap())
+	coreTemplate := template.New("tempIO").Funcs(sprigin.FuncMap())
 	template.Must(coreTemplate.Parse(string(templateData)))
 
 	// render
