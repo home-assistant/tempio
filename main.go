@@ -4,12 +4,17 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"log/slog"
 	"os"
 )
 
 var TempioVersion string
 
 func main() {
+	// sprigin logs a deprecation warning via slog for every legacy sprig
+	// function name (upper, b64enc, ...); keep template rendering quiet
+	slog.SetLogLoggerLevel(slog.LevelError)
+
 	var config *map[string]interface{}
 	configFile := flag.String("conf", "", "Config json file, can be omitted if used in a pipe")
 	templateFile := flag.String("template", "", "Template file")
