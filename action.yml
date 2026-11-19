@@ -10,7 +10,7 @@ runs:
         if [[ "${input}" == "main" ]] || [[ -z "${input}" ]]; then
           input="latest"
         fi
-        echo "::set-output name=version::${input}"
+        echo "version=${input}" >> "$GITHUB_OUTPUT"
 
     - shell: bash
       run: |
